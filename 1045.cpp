@@ -3,12 +3,10 @@
 #include <vector>
 using namespace std;
 int v[100010];
-
-
 int main(){
     int n, max = 0, count = 0;
     scanf("%d", &n);
-    vector<int> a(n), b(n);
+    vector<int> a(n), b(n);//注意是()，不是[]
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
