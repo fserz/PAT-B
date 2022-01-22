@@ -1,34 +1,19 @@
-# include <cstdio>
-# include <cstring>
+# include <iostream>
+# include <string>
+using namespace std;
 int main(){
-    char str[120];
-    gets(str);
-    int len = strlen(str);
+    string s;
+    cin >> s;
     int sum = 0;
-    for(int i = 0; i < len; i++){
-        sum += str[i] - '0';
-    }
-
-    int num = 0, ans[20];
-    while(sum != 0){
-        ans[num] = sum % 10;
-        num++;
-        sum /= 10;
-    }
-    
-    char change[10][5] = {"ling", "yi", "er", "san", "si", "wu", "iu", "qi", "ba", "jiu"};
-    for(int i = num - 1; i >= 0; i--){
-        printf("%s", change[ans[i]]);
-        if(i != 0)
+    string str[10] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
+    for (int i = 0; i < s.size(); i++)
+        sum += (s[i] - '0');
+    string num = to_string(sum);//to_string将数字常量转换为字符串
+    for (int i = 0; i < num.size(); i++)
         {
-            printf(" ");
+            if (i != 0)
+            cout << " ";
+            cout << str[num[i] - '0']; 
         }
-        else{
-            printf("\n");
-        }
-        }
-        return 0;
-    }
-
-
-    
+    return 0;
+}
