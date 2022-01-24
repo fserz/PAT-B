@@ -1,45 +1,31 @@
-# include <cstdio>
-# include <cstring>
-const int max = 1010;
-int Hashtable[70] = {0}, miss = 0;
-int change(char c){
-    if(c > '0' && c < '9')
-    return c - '0';
-    if(c > 'a' && c < 'z')
-    return c - 'a' + 10;
-    if(c > 'A' && c < 'Z')
-    return c - 'A' + 36;
-}
-
-int main()
-{
-    char whole[max], target[max];
-    gets(whole);
-    gets(target);
-
-    int len1 = strlen(whole);
-    int len2 = strlen(target);
-    for(int i = 0; i< len1; i++){
-        int id = change(whole[i]);
-        Hashtable[id]++;
+# include <iostream>
+using namespace std;
+int book[128];
+string a, b;
+int num = 0;
+int main(){
+    cin >> a >> b;
+    for (int i = 0; i < a.size(); i++)
+    {
+        book[a[i]]++;//出现的颜色++
     }
-    for(int i = 0; i < len2; i++){
-        int id = change(target[i]);
-        Hashtable[id]--;
-        if(Hashtable[id] < 0){
-            miss++;
+    for (int i = 0; i < b.size(); i++)
+    {
+        if (book[b[i]] > 0)
+        {
+            book[b[i]]--;
+        }
+        else
+        {
+            num++;//出现不存在的颜色
         }
     }
-    if(miss > 0){
-        printf("No %d\n", miss);
-    }
-    else
+    if (num == 0)
     {
-        printf("Yes %d\n", len1 - len2);
+        cout << "Yes" << " " << a.size() - b.size();
+    }else
+    {
+        cout << "No" << " " << num;
     }
-    
-
-
-
     return 0;
 }
