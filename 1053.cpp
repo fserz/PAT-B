@@ -6,7 +6,7 @@ int main(){
     cin >> n >> e >> d;
     for (int i = 0; i < n; i++)
     {
-        int day = 0;
+        int day = 0;//day必须定义为局部变量，因为每次循环前要把它赋值为0
         cin >> k;
         for (int j = 0; j < k; j++)
         {
